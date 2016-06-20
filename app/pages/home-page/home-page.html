@@ -4,5 +4,12 @@
 
 <ion-content padding class="page1">
   <h2>Welcome to Ionic!</h2>
-  <test-app> loading ... </test-app>
+  <button (click)="takePicture()">
+            <ion-icon name="camera"></ion-icon>
+  </button>
+  <!--<img src="{{ base64Image }}" />-->
+  <!--<test-app [img]="base64Image"> loading ... </test-app>-->
+  <button (click)="goToCropImagePage()">
+    <ion-icon name="wifi"></ion-icon>
+  </button>
 </ion-content>

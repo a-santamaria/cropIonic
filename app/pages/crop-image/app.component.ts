@@ -17,12 +17,16 @@ export class AppComponent {
     constructor() {
         
         this.cropperSettings = new CropperSettings();
+        
         this.cropperSettings.width = 100;
         this.cropperSettings.height = 100;
         this.cropperSettings.croppedWidth =100;
         this.cropperSettings.croppedHeight = 100;
-        this.cropperSettings.canvasWidth = 400;
-        this.cropperSettings.canvasHeight = 300;
+        console.log("window "+ window.screen.width + " x " + window.screen.height);
+        console.log("inner "+ window.innerWidth + " x " + window.innerHeight);
+        this.cropperSettings.canvasWidth = window.innerWidth;
+        this.cropperSettings.canvasHeight = window.innerHeight;
+        this.cropperSettings.keepAspect = false;
 
         this.data = {};
         

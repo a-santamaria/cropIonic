@@ -10,11 +10,15 @@ import {CropImagePage} from '../crop-image/crop-image';
 })
 export class HomePage {
    base64Image: string;
+   image: any;
    zone: any;
+   output: any;
 
   constructor(private _navController: NavController) {
     this.base64Image = "https://placehold.it/150x150";
     this.zone = new NgZone({enableLongStackTrace: false});
+    this.output = {};
+    this.image = new Image();
   }
 
   goToFactsPage() {
@@ -23,18 +27,22 @@ export class HomePage {
 
   goToCropImagePage() {
     this._navController.push(CropImagePage, {
-      image: this.base64Image
+      image: this.image,
+      output: this.output
     });
   }
 
   takePicture() {
      Camera.getPicture({
-        destinationType: Camera.DestinationType.DATA_URL,
+        destinationType: Camera.DestinationType.FILE_URI,
         targetWidth: 1000,
-        targetHeight: 1000
-      }).then((imageData) => {
+        targetHeight: 1000,
+        correctOrientation: true
+      }).then((imageURI) => {
       // imageData is a base64 encoded string
-        this.base64Image = "data:image/jpeg;base64," + imageData;
+        console.log(imageURI);
+        this.image.src =  imageURI;
+        // this.base64Image = "data:image/jpeg;base64," + imageURI;
       }, (err) => {
         console.log(err);
       });

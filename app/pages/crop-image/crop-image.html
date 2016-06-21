@@ -5,6 +5,9 @@
   Ionic pages and navigation.
 -->
 
-<ion-content padding class="crop-image">
-  <test-app [img]="dataImg"> loading ... </test-app>
+<ion-content class="crop-image">
+  <test-app [img]="dataImg" [output]="outputImg"> </test-app>
 </ion-content>
+<button (click)="crop()" class="button button-block button-positive">
+    <ion-icon name="crop"></ion-icon> Crop
+  </button>

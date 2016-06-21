@@ -15,8 +15,16 @@ import { AppComponent } from './app.component';
 })
 export class CropImagePage {
   dataImg: any;
+  outputImg: any;
   constructor(private nav: NavController, private navParams: NavParams) {
     this.dataImg = this.navParams.get('image');
+    this.outputImg = this.navParams.get('output');
     console.log("recibí: "+this.dataImg);
+  }
+
+  crop() {
+    console.log("tomar la imagen recortada!");
+    console.log(this.outputImg);
+    this.nav.pop();
   }
 }

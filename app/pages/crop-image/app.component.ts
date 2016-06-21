@@ -4,14 +4,14 @@ import {ImageCropperComponent, CropperSettings} from 'ng2-img-cropper';
 @Component({
   selector: 'test-app',
   template: `<div>
-        <img-cropper [image]="img" [settings]="cropperSettings"></img-cropper><br>
-        <!-- <img [src]="data.image" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight">-->
+        <img-cropper [image]="img" [settings]="cropperSettings" [output]="output">
+        </img-cropper>
     </div>`,
     directives: [ImageCropperComponent]
 })
 export class AppComponent {
     @Input() img;
-    data: any;
+    @Input() output: any;
     cropperSettings: CropperSettings;
 
     constructor() {
@@ -20,20 +20,20 @@ export class AppComponent {
         
         this.cropperSettings.width = 100;
         this.cropperSettings.height = 100;
-        this.cropperSettings.croppedWidth =100;
+        this.cropperSettings.croppedWidth = 100;
         this.cropperSettings.croppedHeight = 100;
         console.log("window "+ window.screen.width + " x " + window.screen.height);
         console.log("inner "+ window.innerWidth + " x " + window.innerHeight);
         this.cropperSettings.canvasWidth = window.innerWidth;
-        this.cropperSettings.canvasHeight = window.innerHeight;
+        this.cropperSettings.canvasHeight = window.innerHeight-50;
         this.cropperSettings.keepAspect = false;
 
-        this.data = {};
+        // this.output = {};
         
     }
 
     ngOnInit() {
-        console.log("en app component " + this.img);
+        // console.log("en app component " + this.img);
     }
 }
 
